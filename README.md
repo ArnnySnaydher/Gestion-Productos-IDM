@@ -76,3 +76,18 @@ curl -X PUT http://localhost:8080/api/products/1 \
 ```bash
 curl -X DELETE http://localhost:8080/api/products/1
 ```
+
+## Documentación API (Swagger)
+El proyecto incluye Swagger UI para facilitar las pruebas. Una vez levantada la aplicación, accede a:
+http://localhost:8080/webjars/swagger-ui/index.html
+
+## SonarQube
+El archivo `docker-compose.yml` levanta una instancia local de SonarQube en el puerto 9000. 
+Para enviar el reporte de cobertura de JaCoCo a SonarQube, ejecuta:
+
+```bash
+./mvnw clean verify sonar:sonar "-Dsonar.host.url=http://localhost:9000" "-Dsonar.login=admin" "-Dsonar.password=admin"
+```
+*(Nota: Se te obliga a cambiar la contraseña obligatoriamente al iniciar , entonces en el comando se pone el nuevo password en lugar de "admin").*
+
+Puedes ver los resultados en: http://localhost:9000

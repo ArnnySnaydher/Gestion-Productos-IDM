@@ -11,3 +11,12 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=default
     restart: unless-stopped
+
+  sonarqube:
+    image: sonarqube:9.9-community
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_FORCEAUTHENTICATION=false
+    restart: unless-stopped
